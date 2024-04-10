@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace Cosmetics.Commands
 {
-    public class CreateShampooCommand : BaseCommand
+    public class CreateCreamCommand : BaseCommand
     {
-        private const int ExpectedNumberOfArguments = 6;
+        private const int ExpectedNumberOfArguments = 5;
 
-        public CreateShampooCommand(IList<string> parameters, IRepository repository)
+        public CreateCreamCommand(IList<string> parameters, IRepository repository)
             : base(parameters, repository)
         {
         }
@@ -22,11 +22,10 @@ namespace Cosmetics.Commands
             string brand = CommandParameters[1];
             decimal price = ParseDecimalParameter(CommandParameters[2],"price");
             GenderType gender = ParseGenderType(CommandParameters[3]);
-            int milliliters = ParseIntParameter(CommandParameters[4], "milliliters");
-            UsageType usage = ParseUsageType(CommandParameters[5]);
+            ScentType scent = ParseScentType(CommandParameters[4]);
 
 
-            return CreateShampoo(name,brand,price,gender,milliliters,usage);
+            return CreateCream(name,brand,price,gender,scent);
         }
         protected UsageType ParseUsageType(string value)
         {
@@ -37,16 +36,16 @@ namespace Cosmetics.Commands
             throw new ArgumentException($"None of the enums in UsageType match the value {value}.");
         }
 
-        private string CreateShampoo(string name, string brand, decimal price, GenderType gender, int milliliters, UsageType usage)
+        private string CreateCream(string name, string brand, decimal price, GenderType gender, ScentType scent)
         {
             if (this.Repository.ProductExists(name))
             {
                 throw new ArgumentException(string.Format($"Product with name {name} already exists!"));
             }
 
-            this.Repository.CreateShampoo(name, brand, price, gender, milliliters, usage);
+            this.Repository.CreateCream(name, brand, price, gender, scent);
 
-            return $"Shampoo with name {name} was created!";
+            return $"Cream with name {name} was created!";
         }
 
     }

@@ -1,5 +1,8 @@
 ﻿using Cosmetics.Core;
 using Cosmetics.Core.Contracts;
+using Cosmetics.Models.Enums;
+using Cosmetics.Models;
+using System;
 
 namespace Cosmetics
 {
@@ -11,6 +14,7 @@ namespace Cosmetics
             ICommandFactory commandFactory = new CommandFactory(repository);
             IEngine cosmeticsEngine = new Engine(commandFactory);
             cosmeticsEngine.Start();
+         
         }
     }
 }

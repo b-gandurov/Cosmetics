@@ -15,9 +15,9 @@ namespace Cosmetics.Models
 
         public Product(string name,string brand,decimal price, GenderType gender)
         {
-            _name = name;
-            _brand = brand;
-            _price = price;
+            Name = name;
+            Brand = brand;
+            Price = price;
             _gender = gender;
         }
 

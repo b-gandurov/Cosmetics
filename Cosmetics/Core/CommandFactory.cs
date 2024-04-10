@@ -21,41 +21,43 @@ namespace Cosmetics.Core
             // RemoveEmptyEntries makes sure no empty strings are added to the result of the split operation.
             string[] arguments = commandLine.Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
-            CommandType commandType = this.ParseCommandType(arguments[0]);
+            string command = arguments[0];
             List<string> commandParameters = this.ExtractCommandParameters(arguments);
 
-            switch (commandType)
+            switch (command)
             {
-                case CommandType.CreateCategory:
+                case nameof(CommandType.CreateCategory):
                     return new CreateCategoryCommand(commandParameters, repository);
-                case CommandType.CreateShampoo:
-                    throw new NotImplementedException("Not implemented yet.");
-                case CommandType.CreateToothpaste:
-                    throw new NotImplementedException("Not implemented yet.");
-                case CommandType.AddToCategory:
+                case nameof(CommandType.CreateShampoo):
+                    return new CreateShampooCommand(commandParameters, repository);
+                case nameof(CommandType.CreateToothpaste):
+                    return new CreateToothpasteCommand(commandParameters, repository);
+                case nameof(CommandType.CreateCream):
+                    return new CreateCreamCommand(commandParameters, repository);
+                case nameof(CommandType.AddToCategory):
                     return new AddToCategoryCommand(commandParameters, repository);
-                case CommandType.RemoveFromCategory:
+                case nameof(CommandType.RemoveFromCategory):
                     return new RemoveFromCategoryCommand(commandParameters, repository);
-                case CommandType.AddToShoppingCart:
+                case nameof(CommandType.AddToShoppingCart):
                     return new AddToShoppingCartCommand(commandParameters, repository);
-                case CommandType.RemoveFromShoppingCart:
+                case nameof(CommandType.RemoveFromShoppingCart):
                     return new RemoveFromShoppingCartCommand(commandParameters, repository);
-                case CommandType.ShowCategory:
+                case nameof(CommandType.ShowCategory):
                     return new ShowCategoryCommand(commandParameters, repository);
-                case CommandType.TotalPrice:
+                case nameof(CommandType.TotalPrice):
                     return new TotalPriceCommand(repository);
                 default:
-                    throw new ArgumentException($"Command with name: {commandType} doesn't exist!");
+                    throw new ArgumentException($"Command with name: {command} doesn't exist!");
             }
         }
 
         // Attempts to parse CommandType from a given string value.
         // If successful, returns the command enum value
-        private CommandType ParseCommandType(string value)
-        {
-            Enum.TryParse(value, true, out CommandType result);
-            return result;
-        }
+        //private CommandType ParseCommandType(string value)
+        //{
+        //    Enum.TryParse(value, true, out CommandType result);
+        //    return result;
+        //}
 
         // Receives a full line and extracts the parameters that are needed for the command to execute.
         // For example, if the input line is "FilterBy Assignee John",

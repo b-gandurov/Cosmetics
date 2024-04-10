@@ -39,9 +39,9 @@ namespace Cosmetics.Helpers
             }
         }
 
-        internal static void ValidateStringLength(string brand, object brandMinLength, object brandMaxLength)
-        {
-            throw new NotImplementedException();
-        }
+        //internal static void ValidateStringLength(string brand, object brandMinLength, object brandMaxLength)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

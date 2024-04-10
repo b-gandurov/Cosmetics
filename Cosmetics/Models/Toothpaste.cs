@@ -17,7 +17,7 @@ namespace Cosmetics.Models
 
                : base(name, brand, price, gender)
         {
-            this.ingredients = ingredients;
+            Ingredients = ingredients;
         }
 
     public string Ingredients

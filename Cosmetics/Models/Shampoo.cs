@@ -20,7 +20,7 @@ namespace Cosmetics.Models
 
         public Shampoo(string name, string brand, decimal price, GenderType gender, int millilitres, UsageType usage) : base (name, brand, price, gender)
         {
-            _millilitres = millilitres;
+            Millilitres = millilitres;
             _usage = usage;
 
         }
@@ -33,7 +33,7 @@ namespace Cosmetics.Models
             }
             set
             {
-                ValidationHelper.ValidateNonNegative(_millilitres, "Millilitres");
+                ValidationHelper.ValidateNonNegative(value, "Millilitres");
             }
         }
 
