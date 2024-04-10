@@ -53,13 +53,18 @@ namespace Cosmetics.Core
 
         public IShampoo CreateShampoo(string name, string brand, decimal price, GenderType genderType, int millilitres, UsageType usageType)
         {
-            throw new NotImplementedException("Not implemented yet.");
+            IShampoo shampoo = new Shampoo(name, brand, price, genderType, millilitres, usageType);
+            this.products.Add((IProduct)shampoo);
+            return shampoo;
         }
 
         public IToothpaste CreateToothpaste(string name, string brand, decimal price, GenderType genderType, string ingredients)
         {
-            throw new NotImplementedException("Not implemented yet.");
+            IToothpaste toothpaste = new Toothpaste(name, brand, price, genderType, ingredients);
+            this.products.Add((IProduct)toothpaste);
+            return toothpaste;
         }
+
 
         public ICategory FindCategoryByName(string categoryName)
         {
@@ -76,7 +81,15 @@ namespace Cosmetics.Core
 
         public IProduct FindProductByName(string productName)
         {
-            throw new NotImplementedException("Not implemented yet.");
+            foreach (IProduct product in products)
+            {
+                if (product.Name == productName)
+                {
+                    return product;
+                }
+            }
+
+            throw new ArgumentException($"Product {productName} does not exist!");
         }
 
         public bool CategoryExists(string categoryName)

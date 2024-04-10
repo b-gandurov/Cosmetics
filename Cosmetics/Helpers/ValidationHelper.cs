@@ -38,5 +38,10 @@ namespace Cosmetics.Helpers
                 throw new ArgumentOutOfRangeException(string.Format(NegativeNumberErrorMessage, field));
             }
         }
+
+        internal static void ValidateStringLength(string brand, object brandMinLength, object brandMaxLength)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

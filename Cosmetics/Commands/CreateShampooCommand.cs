@@ -1,4 +1,5 @@
 ﻿using Cosmetics.Core.Contracts;
+using Cosmetics.Helpers;
 using System;
 using System.Collections.Generic;
 
@@ -15,7 +16,10 @@ namespace Cosmetics.Commands
 
         public override string Execute()
         {
-            throw new NotImplementedException("Not implemented yet.");
+            ValidationHelper.ValidateArgumentsCount(this.CommandParameters, ExpectedNumberOfArguments);
+            
+
+            throw new NotImplementedException();
         }
 
     }

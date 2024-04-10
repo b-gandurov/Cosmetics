@@ -12,7 +12,7 @@ namespace Cosmetics.Models
         private const int NameMinLength = 2;
         private const int NameMaxLength = 15;
         private const string ProductNotFoundErrorMessage = "Product not found in category.";
-
+        
         private string name;
         private readonly ICollection<IProduct> products;
 
