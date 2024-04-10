@@ -62,8 +62,8 @@ namespace Cosmetics.Models
         {
             StringBuilder productInfo = new StringBuilder();
             productInfo.AppendLine($"#{_name} {_brand}");
-            productInfo.AppendLine($"# Price: {_price}");
-            productInfo.AppendLine($"# Gender: {this.GetType()}");
+            productInfo.AppendLine($" #Price: {_price}");
+            productInfo.AppendLine($" #Gender: {_gender}");
             productInfo.AppendLine(this.CustomInfo());
             productInfo.AppendLine($" ===");
 

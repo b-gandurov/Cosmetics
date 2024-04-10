@@ -17,26 +17,23 @@ namespace Cosmetics.Models
         private UsageType _usage;
 
 
-        public Shampoo(string name, string brand, decimal price, GenderType gender, int millilitres, UsageType usage) 
+        public Shampoo(string name, string brand, decimal price, GenderType gender, int millilitres, UsageType usage)
             : base(name, brand, price, gender)
         {
-            Millilitres = millilitres;
+            ValidationHelper.ValidateNonNegative(millilitres, "Millilitres");
+            _millilitres = millilitres;
             _usage = usage;
         }
 
-        public int Millilitres
-        {
-            get => _millilitres;
-            set { ValidationHelper.ValidateNonNegative(value, "Millilitres"); }
-        }
+        public int Millilitres => _millilitres;
 
         public UsageType Usage => _usage;
 
         protected override string CustomInfo()
         {
             StringBuilder customInfo = new StringBuilder();
-            customInfo.AppendLine($"# Milliliters: {_millilitres}");
-            customInfo.AppendLine($"# Usage: {_usage}");
+            customInfo.AppendLine($" #Milliliters: {Millilitres}");
+            customInfo.AppendLine($" #Usage: {Usage}");
 
             return customInfo.ToString();
         }

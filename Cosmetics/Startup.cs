@@ -1,10 +1,7 @@
 ﻿using Cosmetics.Core;
 using Cosmetics.Core.Contracts;
-using Cosmetics.Models.Enums;
 using Cosmetics.Models;
-using System;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
+using Cosmetics.Models.Enums;
 
 namespace Cosmetics
 {

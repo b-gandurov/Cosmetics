@@ -16,42 +16,29 @@ namespace Cosmetics.Models
 
         private ScentType _scentType;
 
-
-        public Cream(string name, string brand, decimal price, GenderType gender, ScentType scent) : base(name, brand, price, gender)
+        public Cream(string name, string brand, decimal price, GenderType gender, ScentType scent) 
+            : base(name, brand, price, gender)
         {
             _scentType = scent;
-
         }
 
-        public ScentType ScentType
-        {
-            get
-            {
-                return _scentType;
-            }
-        }
+        public ScentType ScentType=> _scentType;
 
         protected override string CustomInfo()
         {
-
             StringBuilder customInfo = new StringBuilder();
-            customInfo.AppendLine($"#Scent: {_scentType}");
+            customInfo.AppendLine($" #Scent: {ScentType}");
 
             return customInfo.ToString();
         }
-
-        protected override void ValidateBrand(string brand)
-        {
-            ValidationHelper.ValidateStringLength(brand, BrandMinLength, BrandMaxLength, "Brand");
-        }
-
-
-
         protected override void ValidateName(string name)
         {
             ValidationHelper.ValidateStringLength(name, NameMinLength, NameMaxLength, "Name");
         }
-
+        protected override void ValidateBrand(string brand)
+        {
+            ValidationHelper.ValidateStringLength(brand, BrandMinLength, BrandMaxLength, "Brand");
+        }
         protected override void ValidatePrice(decimal price)
         {
             ValidationHelper.ValidateNonNegative(price, "Price");

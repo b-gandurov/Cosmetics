@@ -35,7 +35,7 @@ namespace Cosmetics.Commands
 
             this.Repository.CreateToothpaste(name, brand, price, gender, ingredients);
 
-            return $"Shampoo with name {name} was created!";
+            return $"Toothpaste with name {name} was created!";
         }
 
     }

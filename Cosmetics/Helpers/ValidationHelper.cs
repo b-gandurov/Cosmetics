@@ -26,7 +26,7 @@ namespace Cosmetics.Helpers
             }
             else
             {
-                throw new NullReferenceException($"{field} cannot be null.");
+                throw new ArgumentNullException($"{field} cannot be null.");
             }
             
         }
