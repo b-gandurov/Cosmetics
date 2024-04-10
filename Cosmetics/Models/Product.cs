@@ -13,7 +13,7 @@ namespace Cosmetics.Models
         private decimal _price;
         private GenderType _gender;
 
-        public Product(string name,string brand,decimal price, GenderType gender)
+        public Product(string name, string brand, decimal price, GenderType gender)
         {
             Name = name;
             Brand = brand;
@@ -21,39 +21,30 @@ namespace Cosmetics.Models
             _gender = gender;
         }
 
-
-
-
-
-        public string Name { 
+        public string Name
+        {
             get { return _name; }
             private set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("Name should not be null.");
-                }
                 ValidateName(value);
                 _name = value;
             }
         }
 
-        
 
-        public string Brand { 
+
+        public string Brand
+        {
             get { return _brand; }
             private set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException("Brand should not be null.");
-                }
                 ValidateBrand(value);
                 _brand = value;
             }
         }
 
-        public decimal Price { 
+        public decimal Price
+        {
             get { return _price; }
             private set
             {
@@ -62,27 +53,13 @@ namespace Cosmetics.Models
             }
         }
 
-        public GenderType Gender { 
+        public GenderType Gender
+        {
             get { return _gender; }
         }
 
         public string Print()
         {
-            //Shampoo
-            //#{name} {brand}
-            //# Price: {price}
-            //# Gender: {genderType}
-            //# Milliliters: {milliliters}
-            //# Usage: {usageType}
-            //===   
-
-            //Toothpaste
-            //#{name} {brand}
-            //# Price: {price}
-            //# Gender: {genderType}
-            //# Ingredients: [{VALUE}, {VALUE}]
-            // ===
-
             StringBuilder productInfo = new StringBuilder();
             productInfo.AppendLine($"#{_name} {_brand}");
             productInfo.AppendLine($"# Price: {_price}");

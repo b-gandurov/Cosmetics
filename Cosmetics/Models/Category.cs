@@ -29,7 +29,7 @@ namespace Cosmetics.Models
             }
             private set
             {
-                ValidationHelper.ValidateStringLength(value, NameMinLength, NameMaxLength);
+                ValidationHelper.ValidateStringLength(value, NameMinLength, NameMaxLength, "Name");
                 this.name = value;
             }
         }

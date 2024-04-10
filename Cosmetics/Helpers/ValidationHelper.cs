@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Cosmetics.Helpers
 {
@@ -17,9 +18,17 @@ namespace Cosmetics.Helpers
             }
         }
 
-        public static void ValidateStringLength(string stringToValidate, int minLength, int maxLength)
+        public static void ValidateStringLength(string stringToValidate, int minLength, int maxLength,string field)
         {
-            ValidateIntRange(minLength, maxLength, stringToValidate.Length, stringToValidate);
+            if(!string.IsNullOrEmpty(stringToValidate))
+            {
+                ValidateIntRange(minLength, maxLength, stringToValidate.Length, stringToValidate);
+            }
+            else
+            {
+                throw new NullReferenceException($"{field} cannot be null.");
+            }
+            
         }
 
         public static void ValidateArgumentsCount(IList<string> list, int expectedNumberOfParameters)

@@ -41,11 +41,11 @@ namespace Cosmetics.Models
 
         protected override void ValidateName(string name)
         {
-          ValidationHelper.ValidateStringLength(name, NameMinLength, NameMaxLength);
+          ValidationHelper.ValidateStringLength(name, NameMinLength, NameMaxLength, "Name");
         }
         protected override void ValidateBrand(string brand)
         {
-            ValidationHelper.ValidateStringLength(brand, BrandMinLength, BrandMaxLength);
+            ValidationHelper.ValidateStringLength(brand, BrandMinLength, BrandMaxLength,"Brand");
         }
         protected override void ValidatePrice(decimal price)
         {
